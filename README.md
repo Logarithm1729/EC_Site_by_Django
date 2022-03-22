@@ -5,7 +5,7 @@
 # DEMO
  
 トップページ
-(https://user-images.githubusercontent.com/76026039/159591492-42474f31-aa0b-4cc1-8c82-14cedd596589.png)
+https://user-images.githubusercontent.com/76026039/159591492-42474f31-aa0b-4cc1-8c82-14cedd596589.png
 
 カートページ
 https://user-images.githubusercontent.com/76026039/159591584-c7a050b0-c2cb-4868-b1f9-3a2db9a06aac.png
@@ -13,7 +13,8 @@ https://user-images.githubusercontent.com/76026039/159591584-c7a050b0-c2cb-4868-
 決済ページ
 https://user-images.githubusercontent.com/76026039/159591704-3ce4fd2a-0aeb-4265-b764-295fc9555c79.png
 
-カート画面
+購入後、在庫や売上も変更し、人気商品ランキングも変更していく
+https://user-images.githubusercontent.com/76026039/159592219-a169d87f-9689-48cb-8b65-8602f0b7b580.png
 
  
 # Features
