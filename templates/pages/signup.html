@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class='bg-white' style='padding: 20px'>
+    <h1>新規登録</h1>
+    <h5>新規登録(無料)して利用を開始しましょう！</h5>
+    <hr>
+    <div class="row">
+        <div class="col-12">
+            <form method="POST">
+                {% csrf_token %}
+                {% comment %} <div class="row">
+                    <div class="col-md-5">
+                        <input class='form-control' type="text" name='username' placeholder='ユーザー名' required>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-5">
+                        <input class='form-control' type="email" name='email' placeholder='メールアドレス' required>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-5">
+                        <input class='form-control' type="password" name='password' placeholder='パスワード' required>
+                    </div>
+                </div> {% endcomment %}
+                {% for field in form %}
+                <div class="row mb-4">
+                    <div class="col-md-5">
+                        {{field}}
+                    </div>
+                    <div>
+                        {% for error in field.errors %}
+                        <p class='text-danger fw-bold'>{{error}}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+                {% for add_error in form.non_field_errors %}
+                <p class='text-danger fw-bold m-0'>{{add_error}}</p>
+                {% endfor %}
+                <br>
+                <div class="row">
+                    <div class="col-md-5">
+                        アカウントをお持ちですか？<a href='/login/'>ログイン</a>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-5">
+                        <button type="submit" class="btn btn-outline-success" style='width: 100%; font-size: 20px;'
+                            data-mdb-ripple-color="dark">新規登録</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock main %}

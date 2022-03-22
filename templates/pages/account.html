@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<div class="row bg-white" style='padding: 20px'>
+  <div class="col-12">
+    <h1>アカウント設定</h1>
+    <hr>
+  </div>
+  <div class="col-12">
+    <form method="POST" class='row'>
+      {% csrf_token %}
+      <!-- Username input -->
+      <div class="form-outline mb-4 col-md-7">
+        <input type="text" id="form2Example1" class="form-control" style='padding-left: 0;' name='username' value={{user.username}} />
+        <label class="form-label" for="form2Example1">ユーザー名</label>
+      </div>
+
+      <!-- email input -->
+      <div class="form-outline mb-4 col-md-7">
+        <input type="email" id="form2Example2" class="form-control" style='padding-left: 0;' name='email' value={{user.email}} />
+        <label class="form-label" for="form2Example2">Eメール</label>
+      </div>
+      <button type="submit" class="btn btn-primary col-md-7">登録情報を変更</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<div class="row bg-white" style="padding: 20px;">
+    <div class="col-md-4 m-auto">
+        {% if item.images != '' %}
+        <img src="{{item.images.url}}" class="card-img-top">
+        {% else %}
+        <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img"
+            alt="Hollywood Sign on The Hill" />
+        {% endif %}
+    </div>
+    <div class="col-md-4">
+            <h3 class='d-inline-block'>
+                {{object.name}}
+            </h3>
+            {% if object.stock < 20 %}
+            <p class='d-inline-block text-danger'>
+                残り{{object.stock}}点
+            </p>
+            {% else %}
+            <p class='d-inline-block'>
+                残り{{object.stock}}点
+            </p>
+            {% endif %}
+            
+        <br>
+        <div>
+            <h6 class='d-inline-block'>価格&nbsp</h6>
+            <h4 class='d-inline-block text-danger'>¥{{splited_price}}</h4>
+        </div>
+        <br>
+        <p>{{object.description}}</p>
+        <form action="/cart/add/" method='post'>
+            {% csrf_token %}
+            <input type="hidden" name='item_pk', value="{{object.pk}}">
+            <input type="number" name='quantity' value=1 max={{object.stock}} min=1>点
+            <button type="submit" class="btn btn-primary btn-rounded" style="margin-left: 20px;">カートに入れる</button>
+        </form>
+    </div>
+    <div class="col-md-4 mt-5 m-md-0">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h4>Category</h4>
+                <div class="row">
+                    <div class="col-12">
+                        <button type="button" class="btn btn-secondary btn-rounded btn-sm" 
+                        onclick="location.href='/categories/{{object.category.cat_slug}}'">{{object.category.cat_name}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h4>Tags</h4>
+                <div class="row">
+                    <div class="col-12">
+                        {% for tag in object.tags.all %}
+                        <a href="/tags/{{tag.tag_slug}}">
+                            <p class="d-inline-block fw-bolder">#{{tag}}</p>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row col-12 mt-5">
+        <div class="col-12">
+            <h2>おすすめ商品</h2>
+        </div>
+        <div class="col-12">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for add_item in ADDITIONAL_ITEMS %}
+                {% include 'tools/item_add_card.html' %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

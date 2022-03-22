@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% include 'tools/header.html' %}
+{% endblock header %}
+
+{% block main %}
+<div class="bg-white mb-5" style="padding: 30px">
+    <h3 class='mb-4 text-danger'>人気商品ランキング</h3>
+    {% include 'tools/popular_item_card.html' %}
+</div>
+
+
+<div class='bg-white' style="padding: 30px;">
+    <h3 class="mb-4 text-info">Pick Up!!</h3>
+    {% include 'tools/item_card.html' %}
+</div>
+{% endblock main %}

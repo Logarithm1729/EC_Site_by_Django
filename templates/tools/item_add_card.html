@@ -1,0 +1,28 @@
+<div class="col-md-4">
+    <div class="card h-100">
+        <a href="{% url 'base:item_detail' object.pk %}">
+            {% if object.images %}
+            <img src="{{object.images.url}}" class="card-img-top">
+            {% else %}
+            <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top"
+                alt="Hollywood Sign on The Hill" />
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title text-dark fw-bold">{{object.name}}</h5>
+                <p class="card-text text-dark">
+                    {{object.description}}
+                </p>
+            </div>
+        </a>
+        <form action="/cart/add/" method='post' class="card-body" style='position: relative;'>
+            {% csrf_token %}
+            <input type="hidden" name='item_pk' , value="{{object.pk}}">
+            <div class='d-inline-block' style='position: absolute; top: 0; left: 20%;'>
+                <input type="number" name='quantity' value=1 max={{object.stock}} min=1>
+                <p class='d-inline-block'>点</p>
+            </div>
+            <button type="submit" class="btn btn-primary btn-rounded btn-sm" style="margin-left: 20px; position: absolute; top: 0; right: 20%;"><i
+                    class="fas fa-cart-plus"></i></button>
+        </form>
+    </div>
+</div>

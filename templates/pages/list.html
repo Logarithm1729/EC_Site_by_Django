@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+
+{% block main %}
+<div class="row bg-white" style='padding: 20px;'>
+    <div class="col-12">
+        <h2><p class='d-inline-block text-success'>#{{title}}</p>の商品</h2>
+    </div>
+    <div class="col-12 mb-4">
+        {% include 'tools/item_card.html' %}
+    </div>
+
+    {% include 'tools/pagination.html' %}
+</div>
+{% endblock main %}

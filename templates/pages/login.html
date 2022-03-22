@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class='bg-white' style='padding: 20px'>
+    <h1>ログイン</h1>
+    <hr>
+    <div class="row">
+        <div class="col-12">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="row mb-2 m-0">
+                    <div class="col-md-5 form-outline">
+                        <input class='form-control' style='padding-left: 0;' type="text" name='username'>
+                        <label class="form-label" for="form4Example1">ユーザー名</label>
+                    </div>
+                </div>
+                <br>
+                <div class="row mb-2 m-0">
+                    <div class="col-md-5 form-outline">
+                        <input class='form-control' style='padding-left: 0;' type="email" name='email'>
+                        <label class="form-label" for="form4Example1">メールアドレス</label>
+                    </div>
+                </div>
+                <br>
+                <div class="row mb-2 m-0">
+                    <div class="col-md-5 form-outline">
+                        <input class='form-control' style='padding-left: 0;' type="password" name='password'>
+                        <label class="form-label" for="form4Example1">パスワード</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        アカウントを持っていない方は<a href='/signup/'>こちら</a>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-5">
+                        <button type="submit" class="btn btn-outline-success" style='width: 100%; font-size: 20px;'
+                            data-mdb-ripple-color="dark">ログイン</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock main %}

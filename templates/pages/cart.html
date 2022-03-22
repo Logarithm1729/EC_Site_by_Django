@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class='bg-white' style="padding: 20px">
+    <h2 class='mb-4'>カート</h2>
+    {% if request.session.cart.items|length != 0 %}
+    <div class="row justify-content-center mb-5">
+        <div class="col-12 row">
+            <div class="m-auto col-1" style="text-align: center">#</div>
+            <div class="m-auto col-4" style="text-align: center">商品名</div>
+            <div class="m-auto col-2" style="text-align: center">個数</div>
+            <div class="m-auto col-3" style="text-align: center">計</div>
+            <div class="col-md-2"></div>
+        </div>
+        <hr>
+        {% for item in object_list %}
+        <div class="col-12 row mb-3">
+            <div class="m-auto col-1" style="text-align: center">{{forloop.counter}}</div>
+            <div class="m-auto col-4" style="text-align: center">{{item.name}}</div>
+            <div class="m-auto col-2" style="text-align: center">{{item.quantity}}</div>
+            <div class="m-auto col-3" style="text-align: center">{{item.subtotal}}</div>
+            <div class="col-md-2 d-flex justify-content-evenly justify-content-md-between" style="text-align: right;">
+                <button class="btn btn-danger btn-floating" role="button"
+                    onclick="location.href='{% url 'base:cart_remove' item.pk %}'">
+                    <i class="fas fa-trash"></i>
+                </button>
+                <button class="btn btn-info btn-floating" role="button"
+                    onclick="location.href='{% url 'base:item_detail' item.pk %}'">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+        </div>
+        <hr>
+        {% endfor %}
+        <br>
+        <br>
+        <div class="col-12 row justify-content-center justify-content-sm-end">
+            <div class='row col-sm-2 col-md-3 mb-3'>
+                <div class="col-12" style="text-align: center;">小計</div>
+                <div class="col-12" style="text-align: center;">¥{{str_total}}</div>
+            </div>
+            <div class='row col-sm-2 col-md-3 mb-3'>
+                <div class="col-12" style="text-align: center;">合計(税込)</div>
+                <div class="col-12 fw-bold" style="text-align: center;">¥{{str_tax_included_total}}</div>
+            </div>
+            <div class='row col-sm-2 col-md-3 mb-3'>
+                <div class="col-12 m-auto">
+                    <form action="/pay/checkout/" method='POST'>
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-warning w-100">レジへ</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <h4 class='text-danger fw-bold mb-5'>カートは空です</h4>
+    {% endif %}
+
+    <div class="row">
+        <div class="col-12">
+            <h2>おすすめ商品</h2>
+        </div>
+        <div class="col-12">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for object in ADDITIONAL_ITEMS %}
+                {% include 'tools/item_add_card.html' %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock main %}

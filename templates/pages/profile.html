@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
+<div class="row bg-white" style='padding: 20px'>
+  <div class="col-12">
+    <h1>プロフィール</h1>
+    <hr>
+  </div>
+  <div class="col-12">
+    <form method="POST">
+      {% csrf_token %}
+      <div class="row mb-4">
+        <div class="col">
+          <div class="form-outline">
+            <input type="text" id="form6Example1" class="form-control" name='first_name' value={{user.profile.first_name}} >
+            <label class="form-label" for="form6Example1">First name</label>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-outline">
+            <input type="text" id="form6Example1" class="form-control" name='last_name' value={{user.profile.last_name}} >
+            <label class="form-label" for="form6Example1">Last name</label>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class="col">
+          <div class="form-outline">
+            <input type="text" id="form6Example1" class="form-control" name='zipcode' value={{user.profile.zipcode}} >
+            <label class="form-label" for="form6Example1">郵便番号</label>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-outline">
+            <input type="text" id="form6Example1" class="form-control" name='prefecture' value={{user.profile.prefecture}} >
+            <label class="form-label" for="form6Example1">都道府県</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-outline mb-4">
+        <input type="text" id="form6Example1" class="form-control" name='address1' value={{user.profile.address1}} >
+        <label class="form-label" for="form6Example1">市区町村</label>
+      </div>
+      <div class="form-outline mb-4">
+        <input type="text" id="form6Example1" class="form-control" name='address2' value={{user.profile.address2}} >
+        <label class="form-label" for="form6Example1">番地・アパート名</label>
+      </div>
+      <div class="form-outline mb-4">
+        <input type="text" id="form6Example1" class="form-control" name='phone_num' value={{user.profile.phone_num}} >
+        <label class="form-label" for="form6Example1">電話番号</label>
+      </div>
+      
+      <br>
+      <button type="submit" class="btn btn-primary">登録情報を変更</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

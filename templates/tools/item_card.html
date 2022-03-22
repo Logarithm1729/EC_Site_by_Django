@@ -1,0 +1,22 @@
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for item in object_list %}
+    <div class="col">
+        <div class="card h-100">
+            {% if item.images != '' %}
+            <img src="{{item.images.url}}" class="card-img-top">
+            {% else %}
+            <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top"
+                alt="Hollywood Sign on The Hill" />
+            {% endif %}
+            <a href="{% url 'base:item_detail' item.pk %}">
+                <div class="card-body text-dark">
+                    <h5 class="card-title fw-bold">{{item.name}}</h5>
+                    <p class="card-text">
+                        {{item.description}}
+                    </p>
+                </div>
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
