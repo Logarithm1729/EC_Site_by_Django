@@ -5,7 +5,7 @@
 # DEMO
  
 トップページ
-https://user-images.githubusercontent.com/76026039/159591492-42474f31-aa0b-4cc1-8c82-14cedd596589.png
+(https://user-images.githubusercontent.com/76026039/159591492-42474f31-aa0b-4cc1-8c82-14cedd596589.png)
 
 カートページ
 https://user-images.githubusercontent.com/76026039/159591584-c7a050b0-c2cb-4868-b1f9-3a2db9a06aac.png
